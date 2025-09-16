@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Éducatif : Stocker l’Énergie à l’Aide d’un Système Électrochimique</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+            color: #333333;
+            line-height: 1.6;
+            background-attachment: fixed;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #ff6f00;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ff6f00;
+        }
+        header p {
+            font-size: 1.4em;
+            color: #555555;
+        }
+        .objectives {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        .objectives h2 {
+            color: #ff6f00;
+            font-size: 2em;
+            border-bottom: 2px solid #ff6f00;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+        .objectives ul {
+            list-style-type: square;
+            margin-left: 25px;
+            color: #333333;
+        }
+        nav {
+            text-align: center;
+            padding: 25px;
+            background: #ffffff;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            margin: 0 25px;
+            text-decoration: none;
+            color: #ff6f00;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: background 0.4s, color 0.4s;
+        }
+        nav a:hover {
+            background: #ff6f00;
+            color: #ffffff;
+        }
+        section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.4s;
+        }
+        section:hover {
+            transform: scale(1.02);
+        }
+        h2 {
+            color: #ff6f00;
+            font-size: 2em;
+            border-bottom: 2px solid #ff6f00;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+        h3 {
+            color: #e65100;
+            margin-top: 35px;
+        }
+        p {
+            font-size: 1.15em;
+            margin-bottom: 25px;
+            color: #333333;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            color: #333333;
+        }
+        iframe {
+            display: block;
+            margin: 25px auto;
+            border: 3px solid #ff6f00;
+            border-radius: 10px;
+            max-width: 100%;
+        }
+        .quiz {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ff6f00;
+        }
+        .quiz label {
+            display: block;
+            margin: 12px 0;
+            color: #333333;
+        }
+        .quiz button {
+            background: #ff6f00;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+        .quiz button:hover {
+            background: #e65100;
+            color: #ffffff;
+        }
+        .result {
+            margin-top: 25px;
+            font-weight: bold;
+            color: #ff6f00;
+        }
+        .checklist {
+            background: rgba(255, 111, 0, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ff6f00;
+            margin-top: 25px;
+        }
+        .checklist label {
+            display: block;
+            margin: 12px 0;
+            color: #333333;
+        }
+        .summary {
+            background: rgba(255, 111, 0, 0.1);
+            padding: 18px;
+            border-left: 5px solid #ff6f00;
+            margin-bottom: 25px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            padding: 18px;
+            color: #333333;
+        }
+        .card .head {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #ff6f00;
+        }
+        .card .body {
+            font-size: 1.05em;
+        }
+        canvas {
+            display: block;
+            margin: 25px auto;
+            border: 2px solid #ff6f00;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #ffffff;
+            color: #ff6f00;
+            margin-top: 50px;
+            border-top: 3px solid #ff6f00;
+        }
+        .interactive-sim {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .interactive-sim button {
+            background: #ff6f00;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .interactive-sim button:hover {
+            background: #e65100;
+            color: #ffffff;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Stocker l’Énergie à l’Aide d’un Système Électrochimique</h1>
+        <p>Site éducatif pour élèves de Bac Pro : Explorer les principes de stockage d'énergie électrochimique.</p>
+    </header>
+    
+    <div class="objectives">
+        <h2>Objectifs d'Apprentissage</h2>
+        <ul>
+            <li>Réaliser expérimentalement une pile et mesurer la tension aux bornes de cette pile.</li>
+            <li>Déterminer les transformations se produisant sur chacune des électrodes, les équations de demi-réactions étant données.</li>
+            <li>Étudier expérimentalement la charge et la décharge d’un accumulateur.</li>
+            <li>Calculer l’énergie stockée par un accumulateur à partir de sa capacité et de la tension d’utilisation.</li>
+            <li>Comparer l’énergie stockée par unité de masse pour un type d’accumulateur donné.</li>
+        </ul>
+    </div>
+    
+    <nav>
+        <a href="#section1">Construire une Pile</a>
+        <a href="#section2">Réactions aux Électrodes</a>
+        <a href="#section3">Charge et Décharge</a>
+        <a href="#section4">Énergie Stockée</a>
+        <a href="#section5">Comparaison Énergétique</a>
+    </nav>
+    
+    <section id="section1">
+        <h2>Réaliser une Pile et Mesurer la Tension</h2>
+        <p>Cette section montre comment construire une pile électrochimique simple et mesurer sa tension.</p>
+        <h3>Étapes Expérimentales</h3>
+        <ul>
+            <li>Préparez deux électrodes (ex. : cuivre et zinc) et un électrolyte (ex. : solution de sulfate de cuivre).</li>
+            <li>Connectez les électrodes à un voltmètre via des fils conducteurs.</li>
+            <li>Immergez les électrodes dans l’électrolyte sans qu’elles se touchent.</li>
+            <li>Mesurez la tension aux bornes de la pile et notez-la.</li>
+        </ul>
+        <div class="card">
+            <div class="head">Simulation Interactive <span class="badge">Animation</span></div>
+            <div class="body">
+                <canvas id="pileSim" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <p>Vidéo Démonstrative :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/SV7U7v2a6Yk" title="Construire une Pile Simple" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <h3>Récapitulatif</h3>
+        <div class="summary">
+            Une pile électrochimique convertit l’énergie chimique en énergie électrique via des réactions d’oxydo-réduction. Par exemple, dans une pile cuivre-zinc, le zinc (anode) s’oxyde en perdant des électrons (Zn → Zn²⁺ + 2e⁻), tandis que le cuivre (cathode) réduit les ions Cu²⁺ (Cu²⁺ + 2e⁻ → Cu). L’électrolyte permet le passage des ions, et le circuit externe transporte les électrons, créant une différence de potentiel mesurable (environ 1,1 V pour Cu-Zn). Expérimentalement, immerger une électrode de zinc et une de cuivre dans une solution électrolytique (comme H₂SO₄ ou NaCl) et connecter un voltmètre permet de mesurer cette tension. La tension dépend des matériaux des électrodes et de la concentration de l’électrolyte, selon l’équation de Nernst. Les piles sont utilisées dans les batteries jetables ou les capteurs électrochimiques, offrant une source d’énergie portable mais non rechargeable.
+        </div>
+        
+        <h3>Quiz Interactif</h3>
+        <div class="quiz">
+            <form id="quiz1">
+                <p>1. Quelle énergie est convertie dans une pile ?</p>
+                <label><input type="radio" name="q1" value="a"> Mécanique</label>
+                <label><input type="radio" name="q1" value="b"> Chimique</label>
+                <label><input type="radio" name="q1" value="c"> Thermique</label>
+                
+                <p>2. L’anode subit une ?</p>
+                <label><input type="radio" name="q2" value="a"> Réduction</label>
+                <label><input type="radio" name="q2" value="b"> Oxydation</label>
+                <label><input type="radio" name="q2" value="c"> Fusion</label>
+                
+                <p>3. Quel appareil mesure la tension ?</p>
+                <label><input type="radio" name="q3" value="a"> Ammètre</label>
+                <label><input type="radio" name="q3" value="b"> Voltmètre</label>
+                <label><input type="radio" name="q3" value="c"> Oscilloscope</label>
+                
+                <p>4. Que transporte l’électrolyte ?</p>
+                <label><input type="radio" name="q4" value="a"> Électrons</label>
+                <label><input type="radio" name="q4" value="b"> Ions</label>
+                <label><input type="radio" name="q4" value="c"> Protons</label>
+                
+                <p>5. Exemple de pile ?</p>
+                <label><input type="radio" name="q5" value="a"> Cuivre-Zinc</label>
+                <label><input type="radio" name="q5" value="b"> Cuivre-Fer</label>
+                <label><input type="radio" name="q5" value="c"> Zinc-Plomb</label>
+                
+                <p>6. La tension dépend de ?</p>
+                <label><input type="radio" name="q6" value="a"> Matériaux électrodes</label>
+                <label><input type="radio" name="q6" value="b"> Longueur des fils</label>
+                <label><input type="radio" name="q6" value="c"> Couleur électrolyte</label>
+                
+                <button type="button" onclick="checkQuiz1()">Valider</button>
+            </form>
+            <div id="result1" class="result"></div>
+        </div>
+        
+        <div class="checklist">
+            <h3>Auto-Évaluation</h3>
+            <label><input type="checkbox"> Construire une pile fonctionnelle.</label>
+            <label><input type="checkbox"> Mesurer la tension correctement.</label>
+            <label><input type="checkbox"> Comprendre le rôle des électrodes.</label>
+        </div>
+    </section>
+    
+    <section id="section2">
+        <h2>Déterminer les Transformations aux Électrodes</h2>
+        <p>Cette section explique les réactions d’oxydo-réduction aux électrodes d’une pile, avec les équations fournies.</p>
+        <h3>Étapes Expérimentales</h3>
+        <ul>
+            <li>Utilisez une pile cuivre-zinc avec un électrolyte (ex. : sulfate de cuivre).</li>
+            <li>Identifiez l’anode (oxydation) et la cathode (réduction).</li>
+            <li>Écrivez les demi-réactions : Zn → Zn²⁺ + 2e⁻ (anode) et Cu²⁺ + 2e⁻ → Cu (cathode).</li>
+            <li>Observez les dépôts ou corrosions sur les électrodes pour confirmer.</li>
+        </ul>
+        <div class="card">
+            <div class="head">Simulation Interactive <span class="badge">Animation</span></div>
+            <div class="body">
+                <canvas id="electrodeSim" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <p>Vidéo Démonstrative :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/q0P5Z_9lkcA" title="Réactions d’Électrodes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <h3>Récapitulatif</h3>
+        <div class="summary">
+            Dans une pile électrochimique, les électrodes sont le siège de réactions d’oxydo-réduction. À l’anode, une oxydation libère des électrons (ex. : Zn → Zn²⁺ + 2e⁻), tandis qu’à la cathode, une réduction consomme ces électrons (ex. : Cu²⁺ + 2e⁻ → Cu). Les électrons circulent dans le circuit externe, créant un courant, tandis que l’électrolyte maintient la neutralité en transportant les ions. La réaction globale est Zn + Cu²⁺ → Zn²⁺ + Cu, avec une tension déterminée par la différence de potentiel standard des couples redox (E⁰(Cu²⁺/Cu) - E⁰(Zn²⁺/Zn) ≈ 1,1 V). Expérimentalement, on observe une corrosion du zinc (anode) et un dépôt de cuivre sur la cathode, confirmant les transformations. Ces réactions sont essentielles pour comprendre le fonctionnement des piles et accumulateurs, utilisées dans les batteries de téléphones ou véhicules électriques, où la réversibilité des réactions est cruciale.
+        </div>
+        
+        <h3>Quiz Interactif</h3>
+        <div class="quiz">
+            <form id="quiz2">
+                <p>1. À l’anode, il y a ?</p>
+                <label><input type="radio" name="q1" value="a"> Réduction</label>
+                <label><input type="radio" name="q1" value="b"> Oxydation</label>
+                <label><input type="radio" name="q1" value="c"> Fusion</label>
+                
+                <p>2. À la cathode, les électrons sont ?</p>
+                <label><input type="radio" name="q2" value="a"> Libérés</label>
+                <label><input type="radio" name="q2" value="b"> Consommés</label>
+                <label><input type="radio" name="q2" value="c"> Ignorés</label>
+                
+                <p>3. Exemple de demi-réaction à l’anode ?</p>
+                <label><input type="radio" name="q3" value="a"> Cu²⁺ + 2e⁻ → Cu</label>
+                <label><input type="radio" name="q3" value="b"> Zn → Zn²⁺ + 2e⁻</label>
+                <label><input type="radio" name="q3" value="c"> Cu → Cu²⁺ + 2e⁻</label>
+                
+                <p>4. La tension dépend du ?</p>
+                <label><input type="radio" name="q4" value="a"> Couple redox</label>
+                <label><input type="radio" name="q4" value="b"> Volume électrolyte</label>
+                <label><input type="radio" name="q4" value="c"> Poids électrodes</label>
+                
+                <p>5. L’électrolyte transporte ?</p>
+                <label><input type="radio" name="q5" value="a"> Électrons</label>
+                <label><input type="radio" name="q5" value="b"> Ions</label>
+                <label><input type="radio" name="q5" value="c"> Neutrons</label>
+                
+                <p>6. Signe d’oxydation à l’anode ?</p>
+                <label><input type="radio" name="q6" value="a"> Corrosion</label>
+                <label><input type="radio" name="q6" value="b"> Dépôt</label>
+                <label><input type="radio" name="q6" value="c"> Rien</label>
+                
+                <button type="button" onclick="checkQuiz2()">Valider</button>
+            </form>
+            <div id="result2" class="result"></div>
+        </div>
+        
+        <div class="checklist">
+            <h3>Auto-Évaluation</h3>
+            <label><input type="checkbox"> Identifier anode et cathode.</label>
+            <label><input type="checkbox"> Écrire les demi-réactions.</label>
+            <label><input type="checkbox"> Observer les transformations.</label>
+        </div>
+    </section>
+    
+    <section id="section3">
+        <h2>Étudier la Charge et la Décharge d’un Accumulateur</h2>
+        <p>Cette section explore le fonctionnement d’un accumulateur (batterie rechargeable) en charge et décharge.</p>
+        <h3>Étapes Expérimentales</h3>
+        <ul>
+            <li>Utilisez un accumulateur (ex. : Ni-MH ou Li-ion).</li>
+            <li>Connectez-le à un circuit de charge avec une source de tension constante.</li>
+            <li>Mesurez la tension et le courant pendant la charge et la décharge.</li>
+            <li>Observez les variations via un multimètre ou un oscilloscope.</li>
+        </ul>
+        <div class="card">
+            <div class="head">Simulation Interactive <span class="badge">Animation</span></div>
+            <div class="body">
+                <canvas id="batterySim" width="400" height="300"></canvas>
+                <div class="interactive-sim">
+                    <button onclick="setChargeMode('charge')">Charger</button>
+                    <button onclick="setChargeMode('discharge')">Décharger</button>
+                </div>
+            </div>
+        </div>
+        <p>Vidéo Démonstrative :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9e7pO3L4kfo" title="Charge et Décharge d’une Batterie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <h3>Récapitulatif</h3>
+        <div class="summary">
+            Un accumulateur stocke l’énergie sous forme chimique et la libère sous forme électrique. Pendant la charge, une source externe force une réaction d’oxydo-réduction inverse (ex. : pour un accumulateur Ni-MH, NiOOH est réduit à l’anode, et le métal hydride est oxydé à la cathode). Pendant la décharge, les réactions spontanées libèrent des électrons, produisant un courant. La tension reste relativement stable (ex. : 1,2 V pour Ni-MH, 3,7 V pour Li-ion), mais diminue légèrement en fin de décharge. Expérimentalement, connecter un accumulateur à une charge (résistance) et mesurer la tension montre une courbe de décharge, tandis que la charge sous tension constante augmente la capacité stockée. Les accumulateurs sont essentiels dans les véhicules électriques ou les appareils portables, offrant une rechargeabilité mais avec des limites comme l’effet mémoire (Ni-Cd) ou la dégradation chimique (Li-ion).
+        </div>
+        
+        <h3>Quiz Interactif</h3>
+        <div class="quiz">
+            <form id="quiz3">
+                <p>1. Un accumulateur est ?</p>
+                <label><input type="radio" name="q1" value="a"> Rechargeable</label>
+                <label><input type="radio" name="q1" value="b"> Non rechargeable</label>
+                <label><input type="radio" name="q1" value="c"> Thermique</label>
+                
+                <p>2. Pendant la charge, les réactions sont ?</p>
+                <label><input type="radio" name="q2" value="a"> Spontanées</label>
+                <label><input type="radio" name="q2" value="b"> Forcées</label>
+                <label><input type="radio" name="q2" value="c"> Absentes</label>
+                
+                <p>3. La tension en décharge est ?</p>
+                <label><input type="radio" name="q3" value="a"> Constante</label>
+                <label><input type="radio" name="q3" value="b"> Variable</label>
+                <label><input type="radio" name="q3" value="c"> Nulle</label>
+                
+                <p>4. Exemple d’accumulateur ?</p>
+                <label><input type="radio" name="q4" value="a"> Li-ion</label>
+                <label><input type="radio" name="q4" value="b"> Pile saline</label>
+                <label><input type="radio" name="q4" value="c"> Condensateur</label>
+                
+                <p>5. Pendant la décharge, l’anode ?</p>
+                <label><input type="radio" name="q5" value="a"> S’oxyde</label>
+                <label><input type="radio" name="q5" value="b"> Se réduit</label>
+                <label><input type="radio" name="q5" value="c"> Reste neutre</label>
+                
+                <p>6. Limite des accumulateurs ?</p>
+                <label><input type="radio" name="q6" value="a"> Dégradation chimique</label>
+                <label><input type="radio" name="q6" value="b"> Pas de recharge</label>
+                <label><input type="radio" name="q6" value="c"> Trop lourd</label>
+                
+                <button type="button" onclick="checkQuiz3()">Valider</button>
+            </form>
+            <div id="result3" class="result"></div>
+        </div>
+        
+        <div class="checklist">
+            <h3>Auto-Évaluation</h3>
+            <label><input type="checkbox"> Comprendre la charge/décharge.</label>
+            <label><input type="checkbox"> Mesurer tension et courant.</label>
+            <label><input type="checkbox"> Identifier les limites.</label>
+        </div>
+    </section>
+    
+    <section id="section4">
+        <h2>Calculer l’Énergie Stockée par un Accumulateur</h2>
+        <p>Cette section explique comment calculer l’énergie stockée dans un accumulateur à partir de sa capacité et tension.</p>
+        <h3>Étapes Expérimentales</h3>
+        <ul>
+            <li>Identifiez la capacité (C, en Ah) et la tension nominale (U, en V) de l’accumulateur.</li>
+            <li>Calculez l’énergie stockée : E = C × U × 3600 (en joules).</li>
+            <li>Utilisez un multimètre pour vérifier la tension réelle.</li>
+            <li>Comparez avec les valeurs théoriques du fabricant.</li>
+        </ul>
+        <div class="card">
+            <div class="head">Calculatrice Interactive <span class="badge">Outil</span></div>
+            <div class="body">
+                <p>Entrez les valeurs :</p>
+                <label>Capacité (Ah) : <input type="number" id="capacity" step="0.01" min="0"></label>
+                <label>Tension (V) : <input type="number" id="voltage" step="0.01" min="0"></label>
+                <button onclick="calculateEnergy()">Calculer</button>
+                <p id="energyResult"></p>
+            </div>
+        </div>
+        <p>Vidéo Explicative :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0yPoHZmEdK4" title="Calculer l’Énergie d’une Batterie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <h3>Récapitulatif</h3>
+        <div class="summary">
+            L’énergie stockée dans un accumulateur est donnée par E = C × U × 3600, où C est la capacité (Ah), U la tension nominale (V), et 3600 convertit Ah en coulombs (1 Ah = 3600 C). Par exemple, un accumulateur Li-ion de 2 Ah à 3,7 V stocke E = 2 × 3,7 × 3600 = 26 640 J (ou 7,4 Wh). Cette énergie représente la capacité à fournir un courant pendant un temps donné. Expérimentalement, mesurer la tension réelle et la capacité (via un test de décharge) permet de valider ces calculs, bien que des pertes (résistance interne, efficacité) réduisent l’énergie utilisable. Cette méthode est cruciale pour dimensionner les batteries dans des applications comme les smartphones ou les voitures électriques, où l’énergie disponible doit correspondre aux besoins énergétiques.
+        </div>
+        
+        <h3>Quiz Interactif</h3>
+        <div class="quiz">
+            <form id="quiz4">
+                <p>1. L’énergie stockée se mesure en ?</p>
+                <label><input type="radio" name="q1" value="a"> Joules</label>
+                <label><input type="radio" name="q1" value="b"> Volts</label>
+                <label><input type="radio" name="q1" value="c"> Ampères</label>
+                
+                <p>2. Formule de l’énergie ?</p>
+                <label><input type="radio" name="q2" value="a"> E = C × U</label>
+                <label><input type="radio" name="q2" value="b"> E = C × U × 3600</label>
+                <label><input type="radio" name="q2" value="c"> E = C / U</label>
+                
+                <p>3. 1 Ah équivaut à ?</p>
+                <label><input type="radio" name="q3" value="a"> 3600 C</label>
+                <label><input type="radio" name="q3" value="b"> 1000 C</label>
+                <label><input type="radio" name="q3" value="c"> 1 C</label>
+                
+                <p>4. Une batterie de 2 Ah et 3 V stocke ?</p>
+                <label><input type="radio" name="q4" value="a"> 6 Wh</label>
+                <label><input type="radio" name="q4" value="b"> 7200 J</label>
+                <label><input type="radio" name="q4" value="c"> 2 Wh</label>
+                
+                <p>5. Les pertes sont dues à ?</p>
+                <label><input type="radio" name="q5" value="a"> Résistance interne</label>
+                <label><input type="radio" name="q5" value="b"> Taille des électrodes</label>
+                <label><input type="radio" name="q5" value="c"> Couleur de la batterie</label>
+                
+                <p>6. Application de ce calcul ?</p>
+                <label><input type="radio" name="q6" value="a"> Dimensionner batteries</label>
+                <label><input type="radio" name="q6" value="b"> Mesurer température</label>
+                <label><input type="radio" name="q6" value="c"> Calculer vitesse</label>
+                
+                <button type="button" onclick="checkQuiz4()">Valider</button>
+            </form>
+            <div id="result4" class="result"></div>
+        </div>
+        
+        <div class="checklist">
+            <h3>Auto-Évaluation</h3>
+            <label><input type="checkbox"> Calculer l’énergie stockée.</label>
+            <label><input type="checkbox"> Vérifier la tension nominale.</label>
+            <label><input type="checkbox"> Comprendre les pertes énergétiques.</label>
+        </div>
+    </section>
+    
+    <section id="section5">
+        <h2>Comparer l’Énergie Stockée par Unité de Masse</h2>
+        <p>Cette section compare l’énergie spécifique (Wh/kg) de différents types d’accumulateurs.</p>
+        <h3>Étapes Expérimentales</h3>
+        <ul>
+            <li>Collectez les données des accumulateurs (ex. : Ni-MH, Li-ion) : capacité, tension, masse.</li>
+            <li>Calculez l’énergie (E = C × U) et divisez par la masse pour obtenir l’énergie spécifique.</li>
+            <li>Comparez les valeurs (ex. : Li-ion ~150-250 Wh/kg, Ni-MH ~60-120 Wh/kg).</li>
+            <li>Analysez les avantages et limites de chaque type.</li>
+        </ul>
+        <div class="card">
+            <div class="head">Comparaison Interactive <span class="badge">Outil</span></div>
+            <div class="body">
+                <p>Sélectionnez un accumulateur :</p>
+                <select id="batteryType">
+                    <option value="li-ion">Li-ion (200 Wh/kg, 3,7 V, 2 Ah, 50 g)</option>
+                    <option value="ni-mh">Ni-MH (80 Wh/kg, 1,2 V, 2 Ah, 100 g)</option>
+                    <option value="lead-acid">Plomb-acide (35 Wh/kg, 2 V, 10 Ah, 1000 g)</option>
+                </select>
+                <button onclick="compareEnergy()">Comparer</button>
+                <p id="comparisonResult"></p>
+            </div>
+        </div>
+        <p>Vidéo Explicative :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/z3x5P2rA4Y4" title="Comparaison Batteries" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <h3>Récapitulatif</h3>
+        <div class="summary">
+            L’énergie spécifique (Wh/kg) mesure la quantité d’énergie stockée par unité de masse, un critère clé pour comparer les accumulateurs. Par exemple, les batteries Li-ion offrent 150-250 Wh/kg, Ni-MH 60-120 Wh/kg, et plomb-acide 30-50 Wh/kg. Pour calculer, on utilise E = C × U pour l’énergie totale, puis on divise par la masse. Expérimentalement, peser un accumulateur et mesurer sa capacité (via décharge contrôlée) permet de déterminer cette valeur. Les Li-ion dominent dans les applications portables (smartphones, véhicules électriques) grâce à leur haute énergie spécifique, mais sont coûteuses et sensibles à la surchauffe. Les Ni-MH sont robustes mais moins denses, et le plomb-acide est économique mais lourd, utilisé dans les véhicules classiques. Ces comparaisons guident le choix des batteries selon les besoins (poids, coût, durabilité).
+        </div>
+        
+        <h3>Quiz Interactif</h3>
+        <div class="quiz">
+            <form id="quiz5">
+                <p>1. L’énergie spécifique se mesure en ?</p>
+                <label><input type="radio" name="q1" value="a"> Wh/kg</label>
+                <label><input type="radio" name="q1" value="b"> J/m</label>
+                <label><input type="radio" name="q1" value="c"> V/kg</label>
+                
+                <p>2. Quel accumulateur a la meilleure énergie spécifique ?</p>
+                <label><input type="radio" name="q2" value="a"> Plomb-acide</label>
+                <label><input type="radio" name="q2" value="b"> Ni-MH</label>
+                <label><input type="radio" name="q2" value="c"> Li-ion</label>
+                
+                <p>3. Comment calcule-t-on l’énergie spécifique ?</p>
+                <label><input type="radio" name="q3" value="a"> E / masse</label>
+                <label><input type="radio" name="q3" value="b"> E × masse</label>
+                <label><input type="radio" name="q3" value="c"> E + masse</label>
+                
+                <p>4. Les Li-ion sont utilisées dans ?</p>
+                <label><input type="radio" name="q4" value="a"> Voitures électriques</label>
+                <label><input type="radio" name="q4" value="b"> Piles jetables</label>
+                <label><input type="radio" name="q4" value="c"> Moteurs thermiques</label>
+                
+                <p>5. Limite des Li-ion ?</p>
+                <label><input type="radio" name="q5" value="a"> Surchauffe</label>
+                <label><input type="radio" name="q5" value="b"> Poids élevé</label>
+                <label><input type="radio" name="q5" value="c"> Non rechargeable</label>
+                
+                <p>6. Le plomb-acide est ?</p>
+                <label><input type="radio" name="q6" value="a"> Lourd</label>
+                <label><input type="radio" name="q6" value="b"> Très léger</label>
+                <label><input type="radio" name="q6" value="c"> Non recyclable</label>
+                
+                <button type="button" onclick="checkQuiz5()">Valider</button>
+            </form>
+            <div id="result5" class="result"></div>
+        </div>
+        
+        <div class="checklist">
+            <h3>Auto-Évaluation</h3>
+            <label><input type="checkbox"> Calculer l’énergie spécifique.</label>
+            <label><input type="checkbox"> Comparer différents accumulateurs.</label>
+            <label><input type="checkbox"> Identifier les applications.</label>
+        </div>
+    </section>
+    
+    <footer>
+        <p>Site créé pour les élèves de Bac Pro. Conforme au programme officiel 2025. Sources : YouTube et ressources éducatives.</p>
+    </footer>
+
+    <script>
+        // Section 1: Pile Simulation
+        const pileCtx = document.getElementById('pileSim').getContext('2d');
+        function drawPile() {
+            pileCtx.clearRect(0, 0, 400, 200);
+            // Electrolyte container
+            pileCtx.fillStyle = '#ff6f00';
+            pileCtx.fillRect(100, 50, 200, 100);
+            // Zinc electrode (anode)
+            pileCtx.fillStyle = '#666666';
+            pileCtx.fillRect(120, 30, 20, 120);
+            pileCtx.fillStyle = '#333333';
+            pileCtx.font = '12px Roboto';
+            pileCtx.fillText('Zn (Anode)', 110, 20);
+            // Copper electrode (cathode)
+            pileCtx.fillStyle = '#b87333';
+            pileCtx.fillRect(260, 30, 20, 120);
+            pileCtx.fillText('Cu (Cathode)', 250, 20);
+            // Voltmeter
+            pileCtx.strokeStyle = '#333333';
+            pileCtx.beginPath();
+            pileCtx.arc(200, 20, 10, 0, 2 * Math.PI);
+            pileCtx.stroke();
+            pileCtx.fillText('V', 197, 23);
+            pileCtx.beginPath();
+            pileCtx.moveTo(140, 30);
+            pileCtx.lineTo(190, 20);
+            pileCtx.moveTo(210, 20);
+            pileCtx.lineTo(260, 30);
+            pileCtx.stroke();
+            // Voltage display
+            pileCtx.fillText('~1.1 V', 180, 50);
+            requestAnimationFrame(drawPile);
+        }
+        drawPile();
+
+        // Section 2: Electrode Reactions Simulation
+        const electrodeCtx = document.getElementById('electrodeSim').getContext('2d');
+        let electronFlow = 0;
+        function drawElectrode() {
+            electrodeCtx.clearRect(0, 0, 400, 200);
+            // Electrolyte
+            electrodeCtx.fillStyle = '#ff6f00';
+            electrodeCtx.fillRect(100, 50, 200, 100);
+            // Zinc electrode (anode)
+            electrodeCtx.fillStyle = '#666666';
+            electrodeCtx.fillRect(120, 30, 20, 120);
+            electrodeCtx.fillStyle = '#333333';
+            electrodeCtx.font = '12px Roboto';
+            electrodeCtx.fillText('Zn → Zn²⁺ + 2e⁻', 110, 20);
+            // Copper electrode (cathode)
+            electrodeCtx.fillStyle = '#b87333';
+            electrodeCtx.fillRect(260, 30, 20, 120);
+            electrodeCtx.fillText('Cu²⁺ + 2e⁻ → Cu', 250, 20);
+            // Electron flow
+            electrodeCtx.strokeStyle = '#e65100';
+            electrodeCtx.beginPath();
+            electrodeCtx.moveTo(140, 30);
+            electrodeCtx.lineTo(200 + 60 * Math.sin(electronFlow), 10);
+            electrodeCtx.lineTo(260, 30);
+            electrodeCtx.stroke();
+            electronFlow += 0.1;
+            requestAnimationFrame(drawElectrode);
+        }
+        drawElectrode();
+
+        // Section 3: Battery Charge/Discharge Simulation
+        let chargeMode = 'discharge';
+        let batteryLevel = 100;
+        function setChargeMode(mode) {
+            chargeMode = mode;
+        }
+        const batteryCtx = document.getElementById('batterySim').getContext('2d');
+        function drawBattery() {
+            batteryCtx.clearRect(0, 0, 400, 300);
+            // Battery
+            batteryCtx.fillStyle = '#ff6f00';
+            batteryCtx.fillRect(150, 50, 100, 200);
+            // Charge level
+            batteryCtx.fillStyle = chargeMode === 'charge' ? '#00ff00' : '#ff0000';
+            batteryCtx.fillRect(150, 250 - batteryLevel * 1.5, 100, batteryLevel * 1.5);
+            // Terminals
+            batteryCtx.fillStyle = '#333333';
+            batteryCtx.fillRect(160, 30, 20, 20);
+            batteryCtx.fillRect(220, 30, 20, 20);
+            batteryCtx.font = '12px Roboto';
+            batteryCtx.fillText('+', 165, 45);
+            batteryCtx.fillText('-', 225, 45);
+            // Status
+            batteryCtx.fillText(chargeMode === 'charge' ? 'Chargement' : 'Déchargement', 160, 270);
+            batteryCtx.fillText(`Niveau: ${Math.round(batteryLevel)}%`, 160, 290);
+            // Update level
+            if (chargeMode === 'charge' && batteryLevel < 100) batteryLevel += 0.2;
+            if (chargeMode === 'discharge' && batteryLevel > 0) batteryLevel -= 0.2;
+            requestAnimationFrame(drawBattery);
+        }
+        drawBattery();
+
+        // Section 4: Energy Calculator
+        function calculateEnergy() {
+            const capacity = parseFloat(document.getElementById('capacity').value);
+            const voltage = parseFloat(document.getElementById('voltage').value);
+            const result = document.getElementById('energyResult');
+            if (isNaN(capacity) || isNaN(voltage)) {
+                result.textContent = 'Veuillez entrer des valeurs valides.';
+                return;
+            }
+            const energyJ = capacity * voltage * 3600;
+            const energyWh = (energyJ / 3600).toFixed(2);
+            result.textContent = `Énergie stockée : ${energyJ.toFixed(2)} J (${energyWh} Wh)`;
+        }
+
+        // Section 5: Energy Comparison
+        function compareEnergy() {
+            const batteryType = document.getElementById('batteryType').value;
+            const result = document.getElementById('comparisonResult');
+            let data;
+            if (batteryType === 'li-ion') {
+                data = { specificEnergy: 200, voltage: 3.7, capacity: 2, mass: 0.05 };
+            } else if (batteryType === 'ni-mh') {
+                data = { specificEnergy: 80, voltage: 1.2, capacity: 2, mass: 0.1 };
+            } else {
+                data = { specificEnergy: 35, voltage: 2, capacity: 10, mass: 1 };
+            }
+            const energy = (data.capacity * data.voltage).toFixed(2);
+            result.textContent = `Type: ${batteryType.toUpperCase()}, Énergie: ${energy} Wh, Masse: ${data.mass} kg, Énergie spécifique: ${data.specificEnergy} Wh/kg`;
+        }
+
+        // Quizzes
+        function checkQuiz1() {
+            const form = document.getElementById('quiz1');
+            const result = document.getElementById('result1');
+            let score = 0;
+            let feedback = '';
+            
+            if (form.q1.value === 'b') { score++; feedback += '<p style="color:green;">Q1 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q1 : Incorrect. Bonne réponse : Chimique.</p>'; }
+            if (form.q2.value === 'b') { score++; feedback += '<p style="color:green;">Q2 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q2 : Incorrect. Bonne réponse : Oxydation.</p>'; }
+            if (form.q3.value === 'b') { score++; feedback += '<p style="color:green;">Q3 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q3 : Incorrect. Bonne réponse : Voltmètre.</p>'; }
+            if (form.q4.value === 'b') { score++; feedback += '<p style="color:green;">Q4 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q4 : Incorrect. Bonne réponse : Ions.</p>'; }
+            if (form.q5.value === 'a') { score++; feedback += '<p style="color:green;">Q5 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q5 : Incorrect. Bonne réponse : Cuivre-Zinc.</p>'; }
+            if (form.q6.value === 'a') { score++; feedback += '<p style="color:green;">Q6 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q6 : Incorrect. Bonne réponse : Matériaux électrodes.</p>'; }
+            
+            feedback += `<p>Score total : ${score}/6</p>`;
+            result.innerHTML = feedback;
+        }
+
+        function checkQuiz2() {
+            const form = document.getElementById('quiz2');
+            const result = document.getElementById('result2');
+            let score = 0;
+            let feedback = '';
+            
+            if (form.q1.value === 'b') { score++; feedback += '<p style="color:green;">Q1 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q1 : Incorrect. Bonne réponse : Oxydation.</p>'; }
+            if (form.q2.value === 'b') { score++; feedback += '<p style="color:green;">Q2 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q2 : Incorrect. Bonne réponse : Consommés.</p>'; }
+            if (form.q3.value === 'b') { score++; feedback += '<p style="color:green;">Q3 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q3 : Incorrect. Bonne réponse : Zn → Zn²⁺ + 2e⁻.</p>'; }
+            if (form.q4.value === 'a') { score++; feedback += '<p style="color:green;">Q4 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q4 : Incorrect. Bonne réponse : Couple redox.</p>'; }
+            if (form.q5.value === 'b') { score++; feedback += '<p style="color:green;">Q5 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q5 : Incorrect. Bonne réponse : Ions.</p>'; }
+            if (form.q6.value === 'a') { score++; feedback += '<p style="color:green;">Q6 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q6 : Incorrect. Bonne réponse : Corrosion.</p>'; }
+            
+            feedback += `<p>Score total : ${score}/6</p>`;
+            result.innerHTML = feedback;
+        }
+
+        function checkQuiz3() {
+            const form = document.getElementById('quiz3');
+            const result = document.getElementById('result3');
+            let score = 0;
+            let feedback = '';
+            
+            if (form.q1.value === 'a') { score++; feedback += '<p style="color:green;">Q1 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q1 : Incorrect. Bonne réponse : Rechargeable.</p>'; }
+            if (form.q2.value === 'b') { score++; feedback += '<p style="color:green;">Q2 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q2 : Incorrect. Bonne réponse : Forcées.</p>'; }
+            if (form.q3.value === 'b') { score++; feedback += '<p style="color:green;">Q3 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q3 : Incorrect. Bonne réponse : Variable.</p>'; }
+            if (form.q4.value === 'a') { score++; feedback += '<p style="color:green;">Q4 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q4 : Incorrect. Bonne réponse : Li-ion.</p>'; }
+            if (form.q5.value === 'a') { score++; feedback += '<p style="color:green;">Q5 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q5 : Incorrect. Bonne réponse : S’oxyde.</p>'; }
+            if (form.q6.value === 'a') { score++; feedback += '<p style="color:green;">Q6 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q6 : Incorrect. Bonne réponse : Dégradation chimique.</p>'; }
+            
+            feedback += `<p>Score total : ${score}/6</p>`;
+            result.innerHTML = feedback;
+        }
+
+        function checkQuiz4() {
+            const form = document.getElementById('quiz4');
+            const result = document.getElementById('result4');
+            let score = 0;
+            let feedback = '';
+            
+            if (form.q1.value === 'a') { score++; feedback += '<p style="color:green;">Q1 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q1 : Incorrect. Bonne réponse : Joules.</p>'; }
+            if (form.q2.value === 'b') { score++; feedback += '<p style="color:green;">Q2 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q2 : Incorrect. Bonne réponse : E = C × U × 3600.</p>'; }
+            if (form.q3.value === 'a') { score++; feedback += '<p style="color:green;">Q3 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q3 : Incorrect. Bonne réponse : 3600 C.</p>'; }
+            if (form.q4.value === 'a') { score++; feedback += '<p style="color:green;">Q4 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q4 : Incorrect. Bonne réponse : 6 Wh.</p>'; }
+            if (form.q5.value === 'a') { score++; feedback += '<p style="color:green;">Q5 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q5 : Incorrect. Bonne réponse : Résistance interne.</p>'; }
+            if (form.q6.value === 'a') { score++; feedback += '<p style="color:green;">Q6 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q6 : Incorrect. Bonne réponse : Dimensionner batteries.</p>'; }
+            
+            feedback += `<p>Score total : ${score}/6</p>`;
+            result.innerHTML = feedback;
+        }
+
+        function checkQuiz5() {
+            const form = document.getElementById('quiz5');
+            const result = document.getElementById('result5');
+            let score = 0;
+            let feedback = '';
+            
+            if (form.q1.value === 'a') { score++; feedback += '<p style="color:green;">Q1 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q1 : Incorrect. Bonne réponse : Wh/kg.</p>'; }
+            if (form.q2.value === 'c') { score++; feedback += '<p style="color:green;">Q2 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q2 : Incorrect. Bonne réponse : Li-ion.</p>'; }
+            if (form.q3.value === 'a') { score++; feedback += '<p style="color:green;">Q3 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q3 : Incorrect. Bonne réponse : E / masse.</p>'; }
+            if (form.q4.value === 'a') { score++; feedback += '<p style="color:green;">Q4 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q4 : Incorrect. Bonne réponse : Voitures électriques.</p>'; }
+            if (form.q5.value === 'a') { score++; feedback += '<p style="color:green;">Q5 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q5 : Incorrect. Bonne réponse : Surchauffe.</p>'; }
+            if (form.q6.value === 'a') { score++; feedback += '<p style="color:green;">Q6 : Correct !</p>'; } else { feedback += '<p style="color:red;">Q6 : Incorrect. Bonne réponse : Lourd.</p>'; }
+            
+            feedback += `<p>Score total : ${score}/6</p>`;
+            result.innerHTML = feedback;
+        }
+    </script>
+</body>
+</html>
